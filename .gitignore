@@ -1,3 +1,11 @@
+# User-env config
+.vs/
+
+# User-specific files
+*.suo
+*.user
+*.sln.docstates
+
 # Build results
 
 [Dd]ebug/
