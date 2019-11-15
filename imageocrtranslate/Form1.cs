@@ -39,8 +39,9 @@ namespace imageocrtranslate
                 currentSelectNode = tn;
             }
             else {
-                textBox1.Text = @"C:\Users\admin\Desktop\工作";
-                DirectoryInfo di = new DirectoryInfo(textBox1.Text);
+                //textBox1.Text = @"C:\Users\admin\Desktop\工作";
+                textBox1.Text = @"C:\Users\admin\Desktop";
+             DirectoryInfo di = new DirectoryInfo(textBox1.Text);
                 TreeNode tn = new TreeNode(textBox1.Text);
                 tn.Tag = "Root";
                 treeView1.Nodes.Clear();
@@ -235,25 +236,28 @@ namespace imageocrtranslate
         }
 
         //translate button
-        private void button5_Click(object sender, EventArgs e)
+        private async void button5_Click(object sender, EventArgs e)
         {
             button5.Enabled = false;
-            string ocrStr = ABBYYHttpHelper.readImage(sourceLanguage, currentSelectNode.FullPath);
-            ocrStr = "オスロプの海で";
-            string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "chinese");
-            if (String.IsNullOrEmpty(targerLanguageStr))
+            string ocrStr = await ABBYYHttpHelper.readImage(sourceLanguage, currentSelectNode.FullPath);
+            if (String.IsNullOrEmpty(ocrStr))
             {
                 richTextBox1.Text = "";
             }
-            else {
-                richTextBox1.Text = targerLanguageStr;
+            else
+            {
+                richTextBox1.Text = ocrStr;
+                string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "chinese");
+                if (String.IsNullOrEmpty(targerLanguageStr))
+                {
+                    richTextBox2.Text = "";
+                }
+                else
+                {
+                    richTextBox2.Text = targerLanguageStr;
+                }
             }
             button5.Enabled = true;
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void textBox3_TextChanged(object sender, EventArgs e)

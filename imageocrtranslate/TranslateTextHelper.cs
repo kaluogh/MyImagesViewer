@@ -17,6 +17,7 @@ namespace imageocrtranslate
             string result = "";
             try
             {
+                //result = text;
                 result = YouDao.translateText(sourceLanguage, text, targetLanguage);
             }
             catch (Exception ex) {
@@ -110,7 +111,7 @@ namespace imageocrtranslate
                 {
                     string readerResult = reader.ReadToEnd();
                     JObject jo = (JObject)JsonConvert.DeserializeObject(readerResult);
-                    result = jo["translation"].ToString();
+                    result = jo["translation"][0].ToString();
                 }
                 Console.WriteLine(result);
             }
