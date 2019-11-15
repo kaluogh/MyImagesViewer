@@ -271,7 +271,7 @@ namespace imageocrtranslate
             try
             {
                 int tempHeight = int.Parse(textBox3.Text);
-                if (tempHeight > 400 && tempHeight < 1000)
+                if (tempHeight > 400 && tempHeight < 2000)
                 {
                     panel1.Height = tempHeight;
                 }
