@@ -11,7 +11,10 @@ namespace imageocrtranslate
 {
     public class ABBYYHttpHelper
     {
-        public static string urlPath = "https://api.ocr.space/Parse/Image";
+        private const string urlPath = "https://api.ocr.space/Parse/Image";
+        private const string ocrKey = "5a64d478-9c89-43d8-88e3-c65de9999580";
+        //private const string key = "helloworld";
+
         public static async Task<string> readImage(string sourceLanguage, string imagePath) {
             string result = "";
             try
@@ -20,7 +23,7 @@ namespace imageocrtranslate
                 httpClient.Timeout = new TimeSpan(1, 1, 1);
 
                 MultipartFormDataContent form = new MultipartFormDataContent();
-                form.Add(new StringContent("helloworld"), "apikey");
+                form.Add(new StringContent(ocrKey), "apikey");
                 form.Add(new StringContent(getTargetLanguage(sourceLanguage)), "language");
                 form.Add(new StringContent("true"), "scale");
                 form.Add(new StringContent("1"), "OCREngine");
