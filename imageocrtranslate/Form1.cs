@@ -239,23 +239,31 @@ namespace imageocrtranslate
         private async void button5_Click(object sender, EventArgs e)
         {
             button5.Enabled = false;
-            string ocrStr = await ABBYYHttpHelper.readImage(sourceLanguage, currentSelectNode.FullPath);
-            if (String.IsNullOrEmpty(ocrStr))
+            try
             {
-                richTextBox1.Text = "";
-            }
-            else
-            {
-                richTextBox1.Text = ocrStr;
-                string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "chinese");
-                if (String.IsNullOrEmpty(targerLanguageStr))
+                string ocrStr = await ABBYYHttpHelper.readImage(sourceLanguage, currentSelectNode.FullPath);
+                Console.WriteLine("Get OcrStr: " + ocrStr);
+                if (String.IsNullOrEmpty(ocrStr))
                 {
-                    richTextBox2.Text = "";
+                    richTextBox1.Text = "";
                 }
                 else
                 {
-                    richTextBox2.Text = targerLanguageStr;
+                    richTextBox1.Text = ocrStr;
+                    string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "chinese");
+                    Console.WriteLine("Get targerLanguageStr: " + targerLanguageStr);
+                    if (String.IsNullOrEmpty(targerLanguageStr))
+                    {
+                        richTextBox2.Text = "";
+                    }
+                    else
+                    {
+                        richTextBox2.Text = targerLanguageStr;
+                    }
                 }
+            }
+            catch (Exception ex) {
+                Console.WriteLine(ex.Message);
             }
             button5.Enabled = true;
         }

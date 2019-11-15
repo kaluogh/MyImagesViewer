@@ -102,7 +102,7 @@
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Location = new System.Drawing.Point(302, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1280, 720);
+            this.panel1.Size = new System.Drawing.Size(700, 980);
             this.panel1.TabIndex = 5;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -118,14 +118,14 @@
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(30, 754);
+            this.textBox2.Location = new System.Drawing.Point(30, 809);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(50, 21);
             this.textBox2.TabIndex = 7;
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(86, 754);
+            this.button4.Location = new System.Drawing.Point(86, 809);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(50, 21);
             this.button4.TabIndex = 8;
@@ -138,7 +138,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(30, 459);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.richTextBox1.Size = new System.Drawing.Size(121, 233);
+            this.richTextBox1.Size = new System.Drawing.Size(121, 294);
             this.richTextBox1.TabIndex = 9;
             this.richTextBox1.Text = "";
             // 
@@ -158,7 +158,7 @@
             this.comboBox1.Items.AddRange(new object[] {
             "japanese",
             "english"});
-            this.comboBox1.Location = new System.Drawing.Point(30, 715);
+            this.comboBox1.Location = new System.Drawing.Point(30, 773);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 20);
             this.comboBox1.TabIndex = 11;
@@ -166,7 +166,7 @@
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(167, 754);
+            this.textBox3.Location = new System.Drawing.Point(157, 809);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(51, 21);
             this.textBox3.TabIndex = 12;
@@ -174,7 +174,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(224, 754);
+            this.button6.Location = new System.Drawing.Point(214, 808);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(50, 21);
             this.button6.TabIndex = 13;
@@ -186,7 +186,7 @@
             // 
             this.richTextBox2.Location = new System.Drawing.Point(157, 459);
             this.richTextBox2.Name = "richTextBox2";
-            this.richTextBox2.Size = new System.Drawing.Size(117, 233);
+            this.richTextBox2.Size = new System.Drawing.Size(117, 294);
             this.richTextBox2.TabIndex = 14;
             this.richTextBox2.Text = "";
             // 
