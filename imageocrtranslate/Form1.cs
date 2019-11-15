@@ -26,6 +26,7 @@ namespace imageocrtranslate
             InitializeComponent();
         }
 
+        //click tree node
         private void button1_Click(object sender, EventArgs e)
         {
             if (Directory.Exists(textBox1.Text))
@@ -184,6 +185,7 @@ namespace imageocrtranslate
 
         }
 
+        //next button
         private void button3_Click(object sender, EventArgs e)
         {
             if (currentSelectNode.NextNode != null)
@@ -232,9 +234,20 @@ namespace imageocrtranslate
             }
         }
 
+        //translate button
         private void button5_Click(object sender, EventArgs e)
         {
-            richTextBox1.Text = "abc\n123";
+            button5.Enabled = false;
+            string ocrStr = ABBYYHttpHelper.readImage(currentSelectNode.FullPath);
+            string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "Chinese");
+            if (String.IsNullOrEmpty(targerLanguageStr))
+            {
+                richTextBox1.Text = "";
+            }
+            else {
+                richTextBox1.Text = targerLanguageStr;
+            }
+            button5.Enabled = true;
         }
 
         private void textBox2_TextChanged(object sender, EventArgs e)
@@ -266,7 +279,7 @@ namespace imageocrtranslate
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedItem) {
+            switch (comboBox1.SelectedItem.ToString()) {
                 case "English":
                     sourceLanguage = "eng";break;
                 case "Japanese":
