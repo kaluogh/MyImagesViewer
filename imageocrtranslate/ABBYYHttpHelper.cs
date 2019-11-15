@@ -12,8 +12,10 @@ namespace imageocrtranslate
     public class ABBYYHttpHelper
     {
         private const string urlPath = "https://api.ocr.space/Parse/Image";
-        private const string ocrKey = "5a64d478-9c89-43d8-88e3-c65de9999580";
-        //private const string key = "helloworld";
+
+        // private const string ocrKey = "5a64d478-9c89-43d8-88e3-c65de9999580";
+        private const string ocrKey = "9dbce3a1fd88957";
+        // private const string ocrKey = "helloworld";
 
         public static async Task<string> readImage(string sourceLanguage, string imagePath) {
             string result = "";
