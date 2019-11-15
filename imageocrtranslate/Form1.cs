@@ -18,7 +18,7 @@ namespace imageocrtranslate
         //private string currentFilePath;
         //private TreeNode currentRootNode;
         private TreeNode currentSelectNode;
-        private string sourceLanguage = "jpn";
+        private string sourceLanguage = "japanese";
 
         public Form1()
         {
@@ -238,8 +238,9 @@ namespace imageocrtranslate
         private void button5_Click(object sender, EventArgs e)
         {
             button5.Enabled = false;
-            string ocrStr = ABBYYHttpHelper.readImage(currentSelectNode.FullPath);
-            string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "Chinese");
+            string ocrStr = ABBYYHttpHelper.readImage(sourceLanguage, currentSelectNode.FullPath);
+            ocrStr = "オスロプの海で";
+            string targerLanguageStr = TranslateTextHelper.translateText(sourceLanguage, ocrStr, "chinese");
             if (String.IsNullOrEmpty(targerLanguageStr))
             {
                 richTextBox1.Text = "";
@@ -279,14 +280,7 @@ namespace imageocrtranslate
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            switch (comboBox1.SelectedItem.ToString()) {
-                case "English":
-                    sourceLanguage = "eng";break;
-                case "Japanese":
-                    sourceLanguage = "jpn"; break;
-                default:
-                    sourceLanguage = "eng"; break;
-            }
+            sourceLanguage = comboBox1.SelectedItem.ToString();
             Console.WriteLine(sourceLanguage);
         }
     }
