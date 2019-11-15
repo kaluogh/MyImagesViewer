@@ -18,6 +18,7 @@ namespace imageocrtranslate
         //private string currentFilePath;
         //private TreeNode currentRootNode;
         private TreeNode currentSelectNode;
+        private string sourceLanguage = "jpn";
 
         public Form1()
         {
@@ -216,6 +217,7 @@ namespace imageocrtranslate
 
         }
 
+        //set view width
         private void button4_Click(object sender, EventArgs e)
         {
             try
@@ -233,6 +235,46 @@ namespace imageocrtranslate
         private void button5_Click(object sender, EventArgs e)
         {
             richTextBox1.Text = "abc\n123";
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        //set view height
+        private void button6_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int tempHeight = int.Parse(textBox3.Text);
+                if (tempHeight > 400 && tempHeight < 1000)
+                {
+                    panel1.Height = tempHeight;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (comboBox1.SelectedItem) {
+                case "English":
+                    sourceLanguage = "eng";break;
+                case "Japanese":
+                    sourceLanguage = "jpn"; break;
+                default:
+                    sourceLanguage = "eng"; break;
+            }
+            Console.WriteLine(sourceLanguage);
         }
     }
 }
