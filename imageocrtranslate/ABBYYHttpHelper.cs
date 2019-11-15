@@ -1,6 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
@@ -31,7 +33,21 @@ namespace imageocrtranslate
                 form.Add(new StringContent("1"), "OCREngine");
 
                 Console.WriteLine(Path.GetFileName(imagePath));
-                byte[] imageData = File.ReadAllBytes(imagePath);
+
+                FileInfo tempFI = new FileInfo(imagePath);
+                Console.WriteLine("文件大小=" + System.Math.Ceiling(tempFI.Length / 1024.0) + " KB");
+
+                byte[] imageData;
+                if (tempFI.Length / 1024.0 > 1000)
+                {
+                    Image tempImage = Image.FromFile(imagePath);
+                    MemoryStream tempMS = ImageHelper.Zip(tempImage, ImageFormat.Jpeg, 1000);
+                    imageData = tempMS.ToArray();
+                    tempMS.Close();
+                }
+                else {
+                    imageData = File.ReadAllBytes(imagePath);
+                }
                 form.Add(new ByteArrayContent(imageData, 0, imageData.Length), "image", Path.GetFileName(imagePath));
                 HttpResponseMessage response = await httpClient.PostAsync("https://api.ocr.space/Parse/Image", form);
                 string strContent = await response.Content.ReadAsStringAsync();
